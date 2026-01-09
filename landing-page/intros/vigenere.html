@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigenère Cipher | Intro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container intro-content">
+        <a href="../index.html" class="back-link">← Back to Hub</a>
+
+        <header class="intro-header">
+            <h1>The Vigenère Cipher</h1>
+            <p class="subtitle">"Le Chiffre Indéchiffrable" (The Indecipherable Cipher)</p>
+        </header>
+
+        <section class="intro-section">
+            <h2>Beyond Simple Substitution</h2>
+            <p>For centuries, simple substitution ciphers were easily cracked using frequency analysis. In the 16th
+                century, Blaise de Vigenère popularized a method that used <strong>multiple</strong> substitution
+                alphabets to hide the frequency patterns.</p>
+        </section>
+
+        <section class="intro-section">
+            <h2>How it Works</h2>
+            <p>The Vigenère cipher uses a keyword (e.g., "KING"). The message is encrypted using a series of Caesar
+                ciphers based on the letters of the keyword.</p>
+            <ul>
+                <li>The first letter of the message is shifted by the first letter of the key ('K').</li>
+                <li>The second letter is shifted by the second letter of the key ('I').</li>
+                <li>...and so on, repeating the keyword as needed.</li>
+            </ul>
+            <p>This means the letter 'E' might be encrypted as 'P' in one place and 'X' in another, making frequency
+                analysis much harder.</p>
+        </section>
+
+        <section class="intro-section">
+            <h2>The Vigenère Square</h2>
+            <p>To perform the encryption manually, cryptographers used a tabular tool called the Vigenère Square (or
+                Tabula Recta). It consists of 26 alphabet rows, each shifted one position to the left.</p>
+        </section>
+
+        <div class="action-bar">
+            <p>Try the polyalphabetic encryption that baffled codebreakers for 300 years.</p>
+            <br>
+            <a href="../../sims/vigenere/" class="btn-start">Launch Simulation</a>
+        </div>
+    </div>
+</body>
+
+</html>

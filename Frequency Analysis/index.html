@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequency Analysis Simulation | Intro to Cryptography</title>
+    <meta name="description"
+        content="Explore frequency analysis to crack simple substitution ciphers. Analyze letter distributions in English, Spanish, French, and German.">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1><span class="accent">Frequency</span> Analysis</h1>
+            <div class="header-controls">
+                <select id="language-select" class="btn">
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                </select>
+                <button id="sort-btn" class="btn">Sort: A-Z</button>
+                <button id="sample-btn" class="btn">Load Sample</button>
+                <button id="reset-btn" class="btn">Reset All</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="control-column">
+                <div class="card">
+                    <label for="input-text">Encrypted Message</label>
+                    <textarea id="input-text" placeholder="Paste encrypted text here..." rows="8"></textarea>
+                </div>
+
+                <div class="card substitution-card">
+                    <label>Substitution Tool</label>
+                    <p class="hint">Map an <strong>Encrypted</strong> letter to a <strong>Decoded</strong> letter.</p>
+                    <div id="substitution-grid" class="substitution-grid">
+                        <!-- JS will populate this -->
+                    </div>
+                </div>
+
+                <div class="card help-card">
+                    <h3>How to use:</h3>
+                    <ul>
+                        <li>Compare the <strong>Message Frequency</strong> with the <strong>Standard Frequency</strong>.
+                        </li>
+                        <li>Find the most common letter in your message and try mapping it to 'E' in the
+                            <strong>Substitution Tool</strong> above.
+                        </li>
+                        <li>The label (e.g., <span class="accent-text">A</span>) is from the <strong>Encrypted</strong>
+                            message. Enter the letter you think it should be in the box.</li>
+                        <li>Look for common patterns and small words like "THE", "AND", or "IS".</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="visualization-column">
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <label>Standard Frequency (<span id="current-lang-label">English</span>)</label>
+                        <div id="standard-chart" class="freq-chart"></div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <label>Message Frequency</label>
+                        <div id="message-chart" class="freq-chart"></div>
+                    </div>
+                </div>
+
+                <div class="decoded-view-container">
+                    <div class="view-header">
+                        <label>Live Decoded Result</label>
+                        <button id="copy-btn" class="btn btn-sm">Copy Result</button>
+                    </div>
+                    <div id="decoded-display" class="decoded-display">
+                        <!-- Live update of substitutions -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <a href="../../" title="Back to Hub"
+        style="position: fixed; top: 20px; right: 20px; z-index: 10000; text-decoration: none; font-size: 24px; background: rgba(0,0,0,0.5); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s;">🏠</a>
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>

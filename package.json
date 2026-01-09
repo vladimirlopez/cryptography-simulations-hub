@@ -1,0 +1,14 @@
+{
+    "name": "crypto-simulations-hub",
+    "version": "1.0.0",
+    "description": "Centralized hub for cryptography simulations.",
+    "scripts": {
+        "build": "node build.js",
+        "serve": "npx http-server dist"
+    },
+    "author": "Vladimir Lopez",
+    "license": "MIT",
+    "devDependencies": {
+        "http-server": "^14.1.1"
+    }
+}

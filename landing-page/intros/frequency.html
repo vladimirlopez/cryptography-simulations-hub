@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequency Analysis | Intro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container intro-content">
+        <a href="../index.html" class="back-link">← Back to Hub</a>
+
+        <header class="intro-header">
+            <h1>Frequency Analysis</h1>
+            <p class="subtitle">The Art of Codebreaking</p>
+        </header>
+
+        <section class="intro-section">
+            <h2>The Weakness of Substitution</h2>
+            <p>Simple substitution ciphers (like the Caesar Shift) preserve the patterns of the original language. In
+                English, the letter <strong>E</strong> is the most common, followed by <strong>T</strong>,
+                <strong>A</strong>, <strong>H</strong>, <strong>I</strong>, <strong>N</strong>, and <strong>S</strong>.
+            </p>
+            <p>If you have a long enough piece of encrypted text, you can count the frequency of each letter. The most
+                frequent character in the ciphertext is likely replacing 'E' in the plaintext.</p>
+        </section>
+
+        <section class="intro-section">
+            <h2>Patterns Beyond Single Letters</h2>
+            <p>Codebreakers also look for:</p>
+            <ul>
+                <li><strong>Bigrams:</strong> Pairs of letters like 'TH', 'HE', 'IN', 'ER'.</li>
+                <li><strong>Double Letters:</strong> 'LL', 'SS', 'EE', 'OO'.</li>
+                <li><strong>Short Words:</strong> 'THE', 'AND', 'OF', 'TO'.</li>
+            </ul>
+        </section>
+
+        <section class="intro-section">
+            <h2>Al-Kindi</h2>
+            <p>The technique was first described by the 9th-century Arab mathematician Al-Kindi. His work marked the
+                beginning of true cryptanalysis, showing that simple substitution ciphers were no longer secure.</p>
+        </section>
+
+        <div class="action-bar">
+            <p>Become a codebreaker. Analyze letter frequencies to crack secret messages.</p>
+            <br>
+            <a href="../../sims/frequency/" class="btn-start">Launch Simulation</a>
+        </div>
+    </div>
+</body>
+
+</html>
