@@ -57,7 +57,7 @@ SIMULATIONS.forEach(sim => {
 
 // 3. Copy Landing Page Assets
 console.log('--- Copying Landing Page ---');
-run(`cp -R "${LANDING_PAGE_DIR}/" "${DIST_DIR}"`);
+run(`cp -R "${LANDING_PAGE_DIR}"/* "${DIST_DIR}"`);
 
 console.log('--- Build Complete! ---');
 console.log(`Website assembled in ${DIST_DIR}`);
