@@ -45,11 +45,12 @@ SIMULATIONS.forEach(sim => {
     run('npm run build', simDir);
 
     // Copy build to dist
-    // Vite usually builds to 'dist' inside the project
     const simDist = path.join(simDir, 'dist');
     if (fs.existsSync(simDist)) {
-        // We use cp -r for simplicity in this environment, or fs.cpSync in Node 16.7+
-        run(`cp -R "${simDist}/" "${destDir}"`);
+        if (!fs.existsSync(destDir)) {
+            fs.mkdirSync(destDir, { recursive: true });
+        }
+        run(`cp -R "${simDist}/." "${destDir}"`);
     } else {
         console.error(`Error: Build directory not found for ${sim.name}`);
     }
@@ -57,7 +58,7 @@ SIMULATIONS.forEach(sim => {
 
 // 3. Copy Landing Page Assets
 console.log('--- Copying Landing Page ---');
-run(`cp -R "${LANDING_PAGE_DIR}/" "${DIST_DIR}"`);
+run(`cp -R "${LANDING_PAGE_DIR}/." "${DIST_DIR}"`);
 
 console.log('--- Build Complete! ---');
 console.log(`Website assembled in ${DIST_DIR}`);
