@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caesar Shift | Intro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container intro-content">
+        <a href="../index.html" class="back-link">← Back to Hub</a>
+
+        <header class="intro-header">
+            <h1>The Caesar Shift</h1>
+            <p class="subtitle">One of the simplest and most widely known encryption techniques.</p>
+        </header>
+
+        <section class="intro-section">
+            <h2>History</h2>
+            <p>Named after Julius Caesar, who used it in his private correspondence, the Caesar Shift is a type of
+                <strong>substitution cipher</strong>. Caesar would shift each letter of his message by a fixed number of
+                positions down the alphabet. For example, with a shift of 3, 'A' would be replaced by 'D', 'B' would
+                become 'E', and so on.</p>
+        </section>
+
+        <section class="intro-section">
+            <h2>How it Works</h2>
+            <p>The encryption can be represented using modular arithmetic by first transforming the letters into
+                numbers, according to the scheme, A = 0, B = 1, ..., Z = 25.</p>
+            <p>Encryption of a letter <code>x</code> by a shift <code>n</code> can be described mathematically as:</p>
+            <p><code>E_n(x) = (x + n) mod 26</code></p>
+            <p>Decryption is performed similarly:</p>
+            <p><code>D_n(x) = (x - n) mod 26</code></p>
+        </section>
+
+        <section class="intro-section">
+            <h2>The Wheel</h2>
+            <p>To make this process easier, cipher discs or "Caesar Wheels" were invented. These consist of two rotating
+                disks with the alphabet written on them. By aligning the inner disk relative to the outer disk, one can
+                quickly encrypt and decrypt messages without doing mental math.</p>
+        </section>
+
+        <div class="action-bar">
+            <p>Ready to try it yourself? Use the interactive wheel to encrypt your own secret messages.</p>
+            <br>
+            <a href="../../sims/caesar/" class="btn-start">Launch Simulation</a>
+        </div>
+    </div>
+</body>
+
+</html>

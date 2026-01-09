@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spartan Scytale | Intro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container intro-content">
+        <a href="../index.html" class="back-link">← Back to Hub</a>
+
+        <header class="intro-header">
+            <h1>The Spartan Scytale</h1>
+            <p class="subtitle">An ancient transposition cipher used by the Spartan military.</p>
+        </header>
+
+        <section class="intro-section">
+            <h2>History</h2>
+            <p>The scytale (rhymes with "Italy") is one of the earliest known cryptographic devices, used by the
+                Spartans around 400 BC. Unlike the Caesar cipher which changes the <em>identity</em> of letters, the
+                Scytale changes their <em>position</em>. This is known as a <strong>transposition cipher</strong>.</p>
+        </section>
+
+        <section class="intro-section">
+            <h2>The Mechanism</h2>
+            <p>The system consisted of a tapered cylinder (the scytale) and a strip of parchment. To encrypt a message,
+                the sender would wrap the parchment spirally around the rod and write the message lengthwise along the
+                rod.</p>
+            <p>When unwrapped, the strip would appear to contain a random scramble of letters. The only way to decrypt
+                the message was to wrap the strip around a rod of the exact same diameter.</p>
+        </section>
+
+        <section class="intro-section">
+            <h2>Why it Worked</h2>
+            <p>Without the correct rod diameter, the letters wouldn't align to form words. If you wrapped it around a
+                stick that was too thick or too thin, the letters would meet their neighbors incorrectly, keeping the
+                message hidden.</p>
+        </section>
+
+        <div class="action-bar">
+            <p>Experience the 3D visualization of wrapping and unwrapping the message.</p>
+            <br>
+            <a href="../../sims/scytale/" class="btn-start">Launch Simulation</a>
+        </div>
+    </div>
+</body>
+
+</html>

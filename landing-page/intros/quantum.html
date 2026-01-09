@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Key Distribution | Intro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container intro-content">
+        <a href="../index.html" class="back-link">← Back to Hub</a>
+
+        <header class="intro-header">
+            <h1>Quantum Cryptography</h1>
+            <p class="subtitle">Using the laws of physics to create unbreakable security.</p>
+        </header>
+
+        <section class="intro-section">
+            <h2>The Challenge of Key Distribution</h2>
+            <p>In classical cryptography (like Vigenère or One-Time Pad), the biggest problem is: <em>How do Alice and
+                    Bob agree on a secret key without Eve intercepting it?</em></p>
+            <p>If they send the key over a standard channel, Eve can copy it without anyone knowing.</p>
+        </section>
+
+        <section class="intro-section">
+            <h2>Enter Quantum Mechanics</h2>
+            <p>Quantum Cryptography, specifically the <strong>BB84 Protocol</strong>, uses the properties of photons
+                (light particles) to solve this.</p>
+            <p>According to the <strong>No-Cloning Theorem</strong> and the observer effect in quantum mechanics, it is
+                impossible to measure a quantum state without disturbing it. If Eve tries to listen in, she introduces
+                errors that Alice and Bob can detect.</p>
+        </section>
+
+        <section class="intro-section">
+            <h2>How BB84 Works</h2>
+            <ol>
+                <li><strong>Alice</strong> sends photons polarized in random bases (Rectilinear ✛ or Diagonal ✕).</li>
+                <li><strong>Bob</strong> measures them using random bases.</li>
+                <li>They publicly compare their <em>bases</em> (not the results).</li>
+                <li>Where the bases match, they keep the bits. This becomes the shared key.</li>
+            </ol>
+        </section>
+
+        <div class="action-bar">
+            <p>Simulate the transmission of single photons and watch how eavesdropping is detected.</p>
+            <br>
+            <a href="../../sims/quantum/" class="btn-start">Launch Simulation</a>
+        </div>
+    </div>
+</body>
+
+</html>

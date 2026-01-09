@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Cryptography (BB84) | Intro to Cryptography</title>
+    <meta name="description" content="Interactive simulation of the BB84 Quantum Key Distribution protocol.">
+    <link rel="icon" type="image/png" href="/assets/favicon-iatsVLjP.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-BlOEwT7I.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BXcjOhc2.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1><span class="accent">Quantum</span> Cryptography (BB84)</h1>
+            <div class="header-controls">
+                <button id="reset-btn" class="btn">Reset Simulation</button>
+            </div>
+        </header>
+
+        <main>
+            <section class="control-column">
+                <div class="card intro-card">
+                    <h2>Quantum Key Distribution (QKD)</h2>
+                    <p>This simulation follows the <strong>BB84 Protocol</strong>. In the classroom activity, you used
+                        <strong>Quantum Coins</strong> and <strong>Oriented Boxes</strong> to share a secret key. Here,
+                        the photons represent those coins!
+                    </p>
+                </div>
+
+                <div class="card step-card" id="step-controls">
+                    <div class="step-guide active" data-step="1">
+                        <h3>Step 1: Alice Sends</h3>
+                        <p><strong>In the Activity:</strong> Alice picks a coin (0/1) and a box shape (+ or x). She
+                            sends the box to Bob.</p>
+                        <p><strong>The Theory:</strong> Alice prepares a quantum state (photon polarization) in a
+                            specific basis.</p>
+                        <button id="alice-send-btn" class="btn btn-primary">Alice Sends Photons</button>
+                    </div>
+
+                    <div class="step-guide" data-step="2">
+                        <h3>Step 2: Bob Measures</h3>
+                        <p><strong>In the Activity:</strong> Bob picks a box shape to open Alice's gift. If he picks the
+                            <em>wrong</em> box, he "jiggles" the coin, changing its bit!
+                        </p>
+                        <p><strong>The Theory:</strong> Bob measures the photon in a random basis. If the basis is
+                            different, the result is random (50/50).</p>
+                        <button id="bob-measure-btn" class="btn btn-primary" disabled>Bob Measures</button>
+                    </div>
+
+                    <div class="step-guide" data-step="3">
+                        <h3>Step 3: Sifting (The Public Channel)</h3>
+                        <p><strong>In the Activity:</strong> Alice and Bob shout out their <strong>box shapes</strong>
+                            over the public channel. They <em>never</em> shout the coin bit.</p>
+                        <p><strong>The Theory:</strong> They compare bases. They only keep bits where they used the same
+                            basis (+ or x).</p>
+                        <button id="sift-btn" class="btn btn-primary" disabled>Compare Bases (Sift)</button>
+                    </div>
+
+                    <div class="step-guide" data-step="4">
+                        <h3>Step 4: Shared Key</h3>
+                        <p><strong>In the Activity:</strong> The bits they kept should match perfectly. This is their
+                            secret key!</p>
+                        <p><strong>The Theory:</strong> Quantum mechanics ensures that if an eavesdropper (Eve) tried to
+                            look, she would have "jiggled" the coins, causing detectable errors.</p>
+                        <div id="final-key-display" class="key-result"></div>
+                    </div>
+                </div>
+
+                <div class="card help-card">
+                    <h3>Legend:</h3>
+                    <div class="legend-grid">
+                        <div class="legend-item">
+                            <span class="photon-icon basis-(+)">|</span>
+                            <span>Basis + (0=|, 1=-)</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="photon-icon basis-(x)">/</span>
+                            <span>Basis x (0=\, 1=/)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="visualization-column">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="stream">Live Simulation</button>
+                    <button class="tab-btn" data-tab="theory">Theory Lab</button>
+                </div>
+
+                <div id="stream-tab" class="tab-content active">
+                    <div class="viz-header">
+                        <div class="viz-label">Alice's Photons</div>
+                        <div class="viz-label">Bob's Measurements</div>
+                    </div>
+                    <div id="photon-stream" class="photon-stream">
+                        <div class="empty-state">Click "Alice Sends Photons" to begin.</div>
+                    </div>
+
+                    <div class="table-container">
+                        <table id="sifting-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Alice Basis</th>
+                                    <th>Alice Bit</th>
+                                    <th>Bob Basis</th>
+                                    <th>Bob Result</th>
+                                    <th>Match?</th>
+                                    <th>Final Key</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="theory-tab" class="tab-content">
+                    <div class="theory-grid">
+                        <div class="theory-card">
+                            <h3>Quantum Coin Analogy</h3>
+                            <div class="analogy-container">
+                                <img src="/assets/quantum_coin_analogy-BL6Rzc8D.png" alt="Quantum Coin Analogy" class="theory-img">
+                                <div class="analogy-text">
+                                    <p>Imagine a gold <strong>Quantum Coin</strong> inside a glowing box. The box has
+                                        two slots: a <strong>Plus Slot (+)</strong> and an <strong>X Slot (x)</strong>.
+                                    </p>
+                                    <p>If you look through the right slot, you see the coin as it is. If you look
+                                        through the "wrong" slot, you disturb the coin and it flips randomly!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theory-card">
+                            <h3>Polarization Mapping</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Basis</th>
+                                        <th>Angle</th>
+                                        <th>Bit</th>
+                                        <th>Symbol</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rectilinear (+)</td>
+                                        <td>0° (Horizontal)</td>
+                                        <td>0</td>
+                                        <td><span class="photon-icon">|</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rectilinear (+)</td>
+                                        <td>90° (Vertical)</td>
+                                        <td>1</td>
+                                        <td><span class="photon-icon">-</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diagonal (x)</td>
+                                        <td>45°</td>
+                                        <td>0</td>
+                                        <td><span class="photon-icon">\</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Diagonal (x)</td>
+                                        <td>135°</td>
+                                        <td>1</td>
+                                        <td><span class="photon-icon">/</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="theory-card">
+                            <h3>How Polarizers Work</h3>
+                            <div class="polarizer-demo">
+                                <svg viewBox="0 0 200 100" class="polarizer-svg">
+                                    <line x1="10" y1="50" x2="60" y2="50" stroke="var(--accent-primary)"
+                                        stroke-width="2" />
+                                    <rect x="70" y="25" width="20" height="50" fill="gray" rx="2" />
+                                    <line x1="75" y1="30" x2="75" y2="70" stroke="white" stroke-width="1" />
+                                    <line x1="80" y1="30" x2="80" y2="70" stroke="white" stroke-width="1" />
+                                    <line x1="85" y1="30" x2="85" y2="70" stroke="white" stroke-width="1" />
+                                    <line x1="100" y1="50" x2="150" y2="50" stroke="var(--accent-primary)"
+                                        stroke-width="2" />
+                                    <text x="5" y="20" fill="var(--text-dim)" font-size="10">Correct Basis: 100%
+                                        Signal</text>
+                                </svg>
+                                <p>When Bob uses the <strong>same basis</strong> as Alice, the polarizer acts like a
+                                    perfect gate. The bit comes through unchanged.</p>
+                            </div>
+                            <div class="polarizer-demo">
+                                <svg viewBox="0 0 200 100" class="polarizer-svg">
+                                    <line x1="10" y1="50" x2="30" y2="30" stroke="var(--accent-primary)"
+                                        stroke-width="2" />
+                                    <rect x="70" y="25" width="20" height="50" fill="gray" rx="2" />
+                                    <line x1="75" y1="30" x2="75" y2="70" stroke="white" stroke-width="1" />
+                                    <line x1="100" y1="50" x2="150" y2="50" stroke="var(--accent-primary)"
+                                        stroke-width="2" stroke-dasharray="2" />
+                                    <circle cx="125" cy="50" r="10" fill="none" stroke="var(--error-color)"
+                                        stroke-width="1" />
+                                    <text x="5" y="20" fill="var(--text-dim)" font-size="10">Wrong Basis: Random Result
+                                        (50/50)</text>
+                                </svg>
+                                <p>When the bases <strong>mismatch</strong>, the photon must "choose" a new orientation
+                                    to pass through. This adds quantum noise!</p>
+                            </div>
+                        </div>
+
+                        <div class="theory-card">
+                            <h3>Technical Logic</h3>
+                            <p>How the simulation calculates Bob's measurement:</p>
+                            <pre class="code-snippet"><code>if (BobBasis == AliceBasis) {
+    BobResult = AliceBit; // 100% Signal
+} else {
+    // Quantum Scramble (50/50 chance)
+    BobResult = Math.random() &lt; 0.5 ? '0' : '1'; 
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <a href="../../" title="Back to Hub"
+        style="position: fixed; top: 20px; right: 20px; z-index: 10000; text-decoration: none; font-size: 24px; background: rgba(0,0,0,0.5); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s;">🏠</a>
+</body>
+
+</html>
