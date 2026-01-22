@@ -11,114 +11,131 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;600&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
   <script type="module" crossorigin src="./assets/index-UwhE7HaN.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-B865TXaw.css">
 </head>
 
 <body>
-    <div id="app">
-        <header>
-            <div class="logo">
-                <h1>CAESAR <span class="accent">WHEEL</span></h1>
-            </div>
-            <div class="nav-buttons">
-                <button id="btn-learn" class="nav-btn">How it Works</button>
-                <button id="btn-challenge" class="nav-btn special">Challenge Mode</button>
-            </div>
-        </header>
+    <!-- Hero Section -->
+    <div class="relative w-full h-80 overflow-hidden mb-8">
+        <img alt="Cryptography Lab Background" class="absolute inset-0 w-full h-full object-cover opacity-40"
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABAAAAAIvCAIAAABlVT4NAAAAA3NCSVQICAjb4U/gAAAAjnpUWHRSYXcgcHJvZmlsZSB0eXBlIEFQUDEAAAiZVUxBDsMgDLvzij7BIVlonoMqOlWatqn/P8wUdqijYMsxTs/2buexLd/zsx+vlpYL4cnCIlcAKwYyoALpjDItH+yxFhiFTL/hhgcTri6F++8CYvTYyCg0cyjiusv0bbt39QzXtZKFL3/lrrpjnNo1kH5oZC3Th37YTgAAAxZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNS4wIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6ZXhpZj0iaHR0cDovL25zLmFkb2JlLmNvbS9leGlmLzEuMC8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6SXB0YzR4bXBFeHQ9Imh0dHA6Ly9pcHRjLm9yZy9zdGQvSXB0YzR4bXBFeHQvMjAwOC0wMi0yOS8iIGV4aWY6RGF0ZVRpbWVPcmlnaW5hbD0iMjAyNi0wMS0yMlQxNjo0NDoxNiswMDowMCIgcGhvdG9zaG9wOkNyZWRpdD0iTWFkZSB3aXRoIEdvb2dsZSBBSSIgcGhvdG9zaG9wOkRhdGVDcmVhdGVkPSIyMDI2LTAxLTIyVDE2OjQ0OjE2KzAwOjAwIiBJcHRjNHhtcEV4dDpEaWdpdGFsU291cmNlZmlsZVR5cGU9Imh0dHA6Ly9jdi5pcHRjLm9yZy9uZXdzY29kZXMvZGlnaXRhbHNvdXJjZXR5cGUvdHJhaW5lZEFsZ29yaXRobWljTWVkaWEiIElwdGM0eG1wRXh0OkRpZ2l0YWxTb3VyY2VUeXBlPSJodHRwOi8vY3YuaXB0Yy5vcmcv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"
+            style="filter: brightness(0.6); opacity: 0.6;">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full max-w-7xl mx-auto">
+            <h1
+                class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-2">
+                Caesar Wheel</h1>
+            <p class="text-xl text-slate-300 max-w-2xl">Explore one of the oldest substitution ciphers used by Julius
+                Caesar. Master the art of shifting the alphabet.</p>
+        </div>
+    </div>
 
-        <main>
-            <div class="controls-panel card">
+    <!-- Navigation Buttons -->
+    <div class="max-w-7xl mx-auto px-8 mb-8 flex gap-4">
+        <button id="btn-learn"
+            class="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined">lightbulb</span> How it Works
+        </button>
+        <button id="btn-challenge"
+            class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition-colors flex items-center gap-2 shadow-lg shadow-blue-500/20">
+            <span class="material-symbols-outlined">psychology</span> Challenge Mode
+        </button>
+    </div>
+
+    <main>
+        <div class="controls-panel card">
+            <div class="input-group">
+                <label for="message-input">Message</label>
+                <textarea id="message-input" placeholder="Enter message to encrypt/decrypt..."></textarea>
+                <div class="char-count-info"
+                    style="font-size: 0.7rem; color: var(--text-dim); margin-top: 5px; text-align: right;">
+                    <span id="char-current">0</span>/<span id="char-max">120</span>
+                </div>
+            </div>
+
+            <div class="setting">
+                <label for="shift-slider">Shift Value (Rotation)</label>
+                <div class="slider-container">
+                    <input type="range" id="shift-slider" min="0" max="25" value="3">
+                    <span id="shift-value">3</span>
+                </div>
+            </div>
+
+            <div class="setting">
+                <label>Operation</label>
+                <div class="toggle-switch">
+                    <button id="mode-encode" class="active">Encode</button>
+                    <button id="mode-decode">Decode</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="visualization-area">
+            <div class="wheel-container card">
+                <svg id="caesar-wheel-svg" viewBox="0 0 400 400">
+                    <!-- SVG content will be generated by JS for better control -->
+                </svg>
+                <div class="wheel-instructions"
+                    style="position: absolute; bottom: 20px; color: var(--text-dim); font-size: 0.8rem;">
+                    Click & Drag to Rotate Wheel
+                </div>
+            </div>
+
+            <div class="output-container card">
+                <label class="output-label" id="output-label">Encoded Message</label>
+                <div id="output-text" class="output-text"></div>
+                <button id="btn-copy" class="nav-btn" style="margin-top: 15px; width: 100%;">Copy Message</button>
+            </div>
+        </div>
+    </main>
+
+    <div id="modal-learn" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>The Caesar Cipher</h2>
+            <p style="margin: 20px 0;">Named after Julius Caesar, this is one of the simplest and most famous
+                encryption techniques. It's a <strong>substitution cipher</strong> where each letter in the message
+                is replaced by a letter some fixed number of positions down the alphabet.</p>
+            <h3>How to use the Wheel</h3>
+            <ul style="margin: 15px 0 15px 20px; color: var(--text-main);">
+                <li><strong>Outer Ring:</strong> Represents the original plaintext letters.</li>
+                <li><strong>Inner Ring:</strong> Represents the shifted ciphertext letters.</li>
+                <li><strong>The Shift:</strong> Rotating the inner wheel changes the "Key". For example, a shift of
+                    3 (ROT3) means A becomes D, B becomes E, and so on.</li>
+            </ul>
+            <p>The "Key" is simply the number of positions you shift. To decode, you just shift back the same
+                amount!</p>
+        </div>
+    </div>
+
+    <div id="modal-challenge" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Cipher Challenge</h2>
+            <div id="challenge-area">
+                <p id="challenge-desc">Can you decrypt this message? We think the shift was <span id="hint-shift"
+                        class="accent">?</span>.</p>
+                <div id="challenge-cipher" class="output-text"
+                    style="margin: 20px 0; text-align: center; letter-spacing: 2px;"></div>
                 <div class="input-group">
-                    <label for="message-input">Message</label>
-                    <textarea id="message-input" placeholder="Enter message to encrypt/decrypt..."></textarea>
-                    <div class="char-count-info"
-                        style="font-size: 0.7rem; color: var(--text-dim); margin-top: 5px; text-align: right;">
-                        <span id="char-current">0</span>/<span id="char-max">120</span>
-                    </div>
+                    <input type="text" id="challenge-input"
+                        style="width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-color); color: white; border-radius: 6px;"
+                        placeholder="Your answer...">
                 </div>
-
-                <div class="setting">
-                    <label for="shift-slider">Shift Value (Rotation)</label>
-                    <div class="slider-container">
-                        <input type="range" id="shift-slider" min="0" max="25" value="3">
-                        <span id="shift-value">3</span>
-                    </div>
-                </div>
-
-                <div class="setting">
-                    <label>Operation</label>
-                    <div class="toggle-switch">
-                        <button id="mode-encode" class="active">Encode</button>
-                        <button id="mode-decode">Decode</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="visualization-area">
-                <div class="wheel-container card">
-                    <svg id="caesar-wheel-svg" viewBox="0 0 400 400">
-                        <!-- SVG content will be generated by JS for better control -->
-                    </svg>
-                    <div class="wheel-instructions"
-                        style="position: absolute; bottom: 20px; color: var(--text-dim); font-size: 0.8rem;">
-                        Click & Drag to Rotate Wheel
-                    </div>
-                </div>
-
-                <div class="output-container card">
-                    <label class="output-label" id="output-label">Encoded Message</label>
-                    <div id="output-text" class="output-text"></div>
-                    <button id="btn-copy" class="nav-btn" style="margin-top: 15px; width: 100%;">Copy Message</button>
-                </div>
-            </div>
-        </main>
-
-        <div id="modal-learn" class="modal hidden">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2>The Caesar Cipher</h2>
-                <p style="margin: 20px 0;">Named after Julius Caesar, this is one of the simplest and most famous
-                    encryption techniques. It's a <strong>substitution cipher</strong> where each letter in the message
-                    is replaced by a letter some fixed number of positions down the alphabet.</p>
-                <h3>How to use the Wheel</h3>
-                <ul style="margin: 15px 0 15px 20px; color: var(--text-main);">
-                    <li><strong>Outer Ring:</strong> Represents the original plaintext letters.</li>
-                    <li><strong>Inner Ring:</strong> Represents the shifted ciphertext letters.</li>
-                    <li><strong>The Shift:</strong> Rotating the inner wheel changes the "Key". For example, a shift of
-                        3 (ROT3) means A becomes D, B becomes E, and so on.</li>
-                </ul>
-                <p>The "Key" is simply the number of positions you shift. To decode, you just shift back the same
-                    amount!</p>
+                <button id="btn-submit-challenge" class="nav-btn special"
+                    style="width: 100%; margin-top: 15px;">Submit</button>
+                <div id="challenge-feedback" style="margin-top: 15px; text-align: center;"></div>
             </div>
         </div>
+    </div>
 
-        <div id="modal-challenge" class="modal hidden">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h2>Cipher Challenge</h2>
-                <div id="challenge-area">
-                    <p id="challenge-desc">Can you decrypt this message? We think the shift was <span id="hint-shift"
-                            class="accent">?</span>.</p>
-                    <div id="challenge-cipher" class="output-text"
-                        style="margin: 20px 0; text-align: center; letter-spacing: 2px;"></div>
-                    <div class="input-group">
-                        <input type="text" id="challenge-input"
-                            style="width: 100%; padding: 12px; background: var(--bg-input); border: 1px solid var(--border-color); color: white; border-radius: 6px;"
-                            placeholder="Your answer...">
-                    </div>
-                    <button id="btn-submit-challenge" class="nav-btn special"
-                        style="width: 100%; margin-top: 15px;">Submit</button>
-                    <div id="challenge-feedback" style="margin-top: 15px; text-align: center;"></div>
-                </div>
-            </div>
-        </div>
-
-        <footer>
-            <p>&copy; 2026 Vladimir Lopez. Released under the MIT License.</p>
-            <p>Explore more at <a href="https://vladimirlopez.github.io/the-thinking-experiment/" target="_blank">The
-                    Thinking Experiment</a></p>
-        </footer>
+    <footer>
+        <p>&copy; 2026 Vladimir Lopez. Released under the MIT License.</p>
+        <p>Explore more at <a href="https://vladimirlopez.github.io/the-thinking-experiment/" target="_blank">The
+                Thinking Experiment</a></p>
+    </footer>
     </div>
     <a href="../../" title="Back to Hub"
         style="position: fixed; top: 20px; right: 20px; z-index: 10000; text-decoration: none; font-size: 24px; background: rgba(0,0,0,0.5); width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s;">🏠</a>
