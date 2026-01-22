@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Quantum Key Distribution (BB84) Interactive Lab</title>
+    <!-- Tailwind CSS (Styling Framework) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Material Icons (For symbols like checkmarks, arrows, films) -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+        rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 
+      Note: The images below use the /gen endpoint. 
+      The updated download function will attempt to embed these as Base64 
+      so the downloaded HTML file works offline/locally.
+    -->
+    <!--
+    "/gen?prompt=futuristic+quantum+lab+interface+background+dark+blue+and+cyan+glow&aspect=16:9"
+    "/gen?prompt=clean+educational+illustration+of+two+square+polaroid+film+sheets+on+a+desk+one+marked+with+a+plus+sign+and+one+marked+with+an+X+sign+arrows+indicating+polarization+directions+scientific+diagram+style&aspect=4:3"
+    "/gen?prompt=portrait+of+Alice+quantum+physicist+holding+a+tablet+cartoon+style&aspect=1:1"
+    "/gen?prompt=portrait+of+Bob+quantum+physicist+looking+at+monitor+cartoon+style&aspect=1:1"
+    "/gen?prompt=portrait+of+Eve+mysterious+spy+wearing+sunglasses+cartoon+style&aspect=1:1"
+    -->
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="relative w-full h-80 overflow-hidden">
+        <img alt="Quantum Lab Background" class="absolute inset-0 w-full h-full object-cover opacity-40"
+            src="../landing-page/assets/hero-bg.png"
+            style="">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-transparent to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-8 w-full max-w-[1600px] mx-auto">
+            <div class="flex items-end justify-between">
+                <div>
+                    <h1
+                        class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 mb-2">
+                        BB84 Quantum Cryptography</h1>
+                    <p class="text-xl text-slate-300 max-w-2xl">Use polaroid films to model quantum superposition,</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="max-w-[1600px] mx-auto px-4 py-8 space-y-12">
+
+        <!-- Instructional & Equipment Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <section class="lg:col-span-4 space-y-6">
+            <div class="space-y-6">
+                <div class="card bg-slate-800/80 border-slate-700">
+                    <h2
+                        class="text-2xl font-bold text-white mb-6 flex items-center gap-2 border-b border-slate-700 pb-4">
+                        <span class="material-symbols-outlined text-cyan-400">science</span>
+                        Physical Lab Instructions
+                    </h2>
+                    <p class="text-slate-300 mb-6 italic">
+                        If you have the physical polaroid films, follow these steps to enact the roles
+                        of Alice, Bob,
+                        and Eve.
+                    </p>
+
+                    <div
+                        class="space-y-6 relative before:absolute before:inset-0 before:ml-4 before:w-0.5 before:bg-slate-700 before:-z-10">
+                        <!-- Step 1 -->
+                        <div class="flex gap-4">
+                            <div class="step-number">1</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-blue-400">Setup &amp; Roles</h4>
+                                <p class="text-slate-400 text-sm mt-1">
+                                    Assign one person as <strong>Alice (Sender)</strong> and one as
+                                    <strong>Bob
+                                        (Receiver)</strong>.
+                                    You need a light source (flashlight) and two polaroid films.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="flex gap-4">
+                            <div class="step-number">2</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-blue-400">Alice: Sending a Photon</h4>
+                                <p class="text-slate-400 text-sm mt-1 mb-2">
+                                    Alice chooses a <strong>Bit</strong> (0 or 1) and a
+                                    <strong>Basis</strong> (+ or X).
+                                    She holds her film in front of the light in the corresponding
+                                    orientation:
+                                </p>
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    <div class="bg-blue-900/20 p-2 rounded border border-blue-800">
+                                        <div class="font-bold text-blue-300">Using (+) Film:</div>
+                                        <div>Horizontal (0°) = Bit 0</div>
+                                        <div>Vertical (90°) = Bit 1</div>
+                                    </div>
+                                    <div class="bg-purple-900/20 p-2 rounded border border-purple-800">
+                                        <div class="font-bold text-purple-300">Using (X) Film:</div>
+                                        <div>Right Diag (↗) = Bit 0</div>
+                                        <div>Left Diag (↘) = Bit 1</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="flex gap-4">
+                            <div class="step-number">3</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-blue-400">Bob: Measuring</h4>
+                                <p class="text-slate-400 text-sm mt-1">
+                                    Bob independently chooses a basis (+ or X) and holds his film in
+                                    that orientation.
+                                    He looks through both films (Alice's + His) at the light.
+                                </p>
+                            </div>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="flex gap-4">
+                            <div class="step-number">4</div>
+                            <div>
+                                <h4 class="text-lg font-bold text-blue-400">The Result</h4>
+                                <ul class="text-sm text-slate-400 mt-2 space-y-1 list-disc list-inside">
+                                    <li><strong class="text-white">Bright Light:</strong> The
+                                        polarizations match. Bob
+                                        records the bit corresponding to his film's angle.</li>
+                                    <li><strong class="text-white">Darkness:</strong> The polarizations
+                                        are opposite
+                                        (e.g., Vert vs Horiz). This is the 'inverse' bit.</li>
+                                    <li><strong class="text-white">Grey/Dim Light:</strong> Bases
+                                        Mismatch! (e.g.,
+                                        Vertical vs Diagonal). The photon has a 50% chance of passing.
+                                        This represents
+                                        "Randomness".</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-red-900/20 border border-red-900/50 rounded-lg">
+                        <h4 class="text-red-400 font-bold flex items-center gap-2 mb-2">
+                            <span class="material-symbols-outlined">visibility</span>
+                            Adding Eve (The Eavesdropper)
+                        </h4>
+                        <p class="text-xs text-slate-400">
+                            Eve inserts a <strong>third film</strong> between Alice and Bob. This
+                            represents
+                            interception.
+                            Notice how Eve's film changes the light intensity Bob sees! If Eve uses the
+                            wrong basis, she
+                            dims the light (collapsing the state) before it reaches Bob, introducing
+                            potential errors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulation Control Panel -->
+        <section class="lg:col-span-8 card border-t-4 border-t-blue-500" id="simulation-app">
+            <div class="flex flex-wrap items-center justify-between gap-6 border-b border-slate-700 pb-6 mb-6">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+                        <span class="material-symbols-outlined text-green-400">play_circle</span>
+                        Digital Simulation
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Run the experiment virtually to generate
+                        data.</p>
+                </div>
+                <div class="flex items-center gap-6 bg-slate-900/50 p-4 rounded-xl">
+                    <div class="flex flex-col gap-1">
+                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Sequence
+                            Length</label>
+                        <input class="w-32 accent-blue-500 cursor-pointer" type="range" min="8" max="24" value="12"
+                            id="lengthSlider" oninput="document.getElementById('lengthVal').innerText = this.value">
+                        <span class="text-xs text-center text-blue-400 font-mono"><span id="lengthVal">12</span>
+                            Photons</span>
+                    </div>
+
+                    <div class="h-10 w-px bg-slate-700"></div>
+
+                    <div class="flex items-center gap-3">
+                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider">Eavesdropper
+                            (Eve)</label>
+                        <button id="eveToggle" onclick="toggleEve()"
+                            class="relative w-14 h-7 bg-slate-700 rounded-full transition-colors duration-300 focus:outline-none">
+                            <span id="eveIndicator"
+                                class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-transform duration-300"></span>
+                        </button>
+                        <span id="eveStatus" class="text-xs font-bold text-slate-500">ABSENT</span>
+                    </div>
+
+                    <div class="h-10 w-px bg-slate-700"></div>
+
+                    <button onclick="runSimulation()" class="btn-primary">
+                        <span class="material-symbols-outlined">restart_alt</span>
+                        Run Experiment
+                    </button>
+                </div>
+            </div>
+
+            <!-- Simulation Visualization Track -->
+            <div class="relative w-full overflow-x-auto sim-track pb-4">
+                <div id="sim-container" class="min-w-max px-4 space-y-2">
+                    <!-- Rows will be injected here by JS -->
+                    <div class="text-center text-slate-500 py-12 italic">
+                        Configure parameters and click "Run Experiment" to begin.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Analysis Section (Hidden initially) -->
+            <div id="analysis-panel"
+                class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 hidden opacity-0 transition-opacity duration-500">
+                <!-- Sifted Key Card -->
+                <div class="bg-slate-900 rounded-lg p-5 border border-slate-700 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 bg-green-500/10 rounded-full blur-xl">
+                    </div>
+                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Sifted
+                        Key (Shared
+                        Secret)</h4>
+                    <div id="siftedKeyDisplay"
+                        class="font-mono text-xl text-green-400 break-all tracking-widest min-h-[1.5rem]">
+                        --</div>
+                    <p class="text-xs text-slate-500 mt-2">Only bits where Alice &amp; Bob chose the
+                        same film.</p>
+                </div>
+
+                <!-- Error Rate Card -->
+                <div class="bg-slate-900 rounded-lg p-5 border border-slate-700 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 bg-red-500/10 rounded-full blur-xl">
+                    </div>
+                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Error
+                        Rate (QBER)</h4>
+                    <div class="flex items-end gap-2">
+                        <div id="errorRateDisplay" class="font-mono text-3xl font-bold text-white">0%
+                        </div>
+                        <span class="text-xs text-slate-400 mb-1">of sifted bits</span>
+                    </div>
+                    <div id="errorBar" class="w-full h-2 bg-slate-800 rounded-full mt-3 overflow-hidden">
+                        <div id="errorFill" class="h-full bg-red-500 w-0 transition-all duration-1000">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Status Card -->
+                <div class="bg-slate-900 rounded-lg p-5 border border-slate-700 relative overflow-hidden">
+                    <div id="statusLight"
+                        class="absolute -right-4 -top-4 w-20 h-20 bg-blue-500/10 rounded-full blur-xl">
+                    </div>
+                    <h4 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Security
+                        Status</h4>
+                    <div id="securityStatus" class="font-bold text-lg text-white">--</div>
+                    <p id="securityMsg" class="text-xs text-slate-500 mt-2">Run simulation to analyze.
+                    </p>
+                </div>
+            </div>
+        </section>
+        </div>
+
+                </div>
+
+                        <!-- Educational Footer -->
+        <section class="grid md:grid-cols-6 gap-8">
+            <!-- Learning Content -->
+            <div class="md:col-span-4 space-y-6">
+                <div class="card bg-slate-800/50 border-slate-700/50">
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-yellow-500">lightbulb</span>
+                        Key Quantum Principles
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-4 p-3 rounded-lg bg-slate-900/30">
+                            <span class="material-symbols-outlined text-purple-400">psychology</span>
+                            <div>
+                                <strong class="text-slate-200 block mb-1">Uncertainty Principle</strong>
+                                <p class="text-sm text-slate-400">If Eve uses the <strong>wrong
+                                        basis</strong> (e.g., measuring a Rectilinear photon with a
+                                    Diagonal filter), she permanently alters its state.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 p-3 rounded-lg bg-slate-900/30">
+                            <span class="material-symbols-outlined text-red-400">warning</span>
+                            <div>
+                                <strong class="text-slate-200 block mb-1">Irreversible
+                                    Disturbance</strong>
+                                <p class="text-sm text-slate-400">When Bob measures this disturbed
+                                    photon, he has a 50% chance of an error, even if he uses the correct
+                                    basis. This is how we detect eavesdropping!</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Characters/Legend -->
+            <div class="md:col-span-2">
+
+                <div class="card bg-blue-900/20 border-blue-800">
+                    <h3 class="text-xl font-bold text-white mb-4">The Characters</h3>
+                    <div class="flex gap-4 overflow-x-auto pb-2">
+                        <div class="flex flex-col items-center min-w-[80px]">
+                            <img class="w-16 h-16 rounded-full border-2 border-blue-400 mb-2"
+                                src="../landing-page/assets/hero-bg.png"
+                                style="">
+                            <span class="text-sm font-bold text-blue-300">Alice</span>
+                            <span class="text-xs text-slate-400">Sender</span>
+                        </div>
+                        <div class="flex flex-col items-center min-w-[80px]">
+                            <img id="eveAvatar"
+                                class="w-16 h-16 rounded-full border-2 border-red-500 mb-2 grayscale opacity-50"
+                                src="../landing-page/assets/hero-bg.png"
+                                style="">
+                            <span class="text-sm font-bold text-red-400">Eve</span>
+                            <span class="text-xs text-slate-400">Spy</span>
+                        </div>
+                        <div class="flex flex-col items-center min-w-[80px]">
+                            <img class="w-16 h-16 rounded-full border-2 border-green-400 mb-2"
+                                src="../landing-page/assets/hero-bg.png"
+                                style="">
+                            <span class="text-sm font-bold text-green-300">Bob</span>
+                            <span class="text-xs text-slate-400">Receiver</span>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+
+
+        
+        
+        
+        
+        
+    
+    <footer class="mt-12 pt-8 border-t border-slate-800 text-center pb-12">
+        <p class="text-slate-500 text-sm">
+            &copy; 2026 Vladimir Lopez.
+        </p>
+        <p class="text-slate-400 mt-2">
+            Explore more at <a href="https://thethinkingexperiment.com" class="text-blue-400 hover:text-blue-300 transition-colors">The Thinking Experiment</a>
+        </p>
+    </footer>
+    </main>
+
+    <!-- Simulation Logic -->
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
