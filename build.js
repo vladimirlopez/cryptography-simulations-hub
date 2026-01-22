@@ -6,7 +6,7 @@ const { execSync } = require('child_process');
 const SIMULATIONS = [
     { name: 'Caesar Wheel', offset: 'caesar' },
     { name: 'Frequency Analysis', offset: 'frequency' },
-    { name: 'Quantum Cryptography', offset: 'quantum' },
+    { name: 'quantum-cryptography', offset: 'quantum' },
     { name: 'Scytale', offset: 'scytale' },
     { name: 'Vigenere Cipher', offset: 'vigenere' }
 ];
@@ -59,6 +59,15 @@ SIMULATIONS.forEach(sim => {
 // 3. Copy Landing Page Assets
 console.log('--- Copying Landing Page ---');
 run(`cp -R "${LANDING_PAGE_DIR}/." "${DIST_DIR}"`);
+
+// 4. Ensure simulations can access assets via relative path "../landing-page/assets"
+// Simulations in dist/sims/X look for ../landing-page/assets.
+// That resolves to dist/sims/landing-page/assets.
+const sharedAssetsDir = path.join(DIST_DIR, 'sims', 'landing-page');
+if (!fs.existsSync(sharedAssetsDir)) {
+    fs.mkdirSync(sharedAssetsDir, { recursive: true });
+}
+run(`cp -R "${LANDING_PAGE_DIR}/assets" "${sharedAssetsDir}/"`);
 
 console.log('--- Build Complete! ---');
 console.log(`Website assembled in ${DIST_DIR}`);
