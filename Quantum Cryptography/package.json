@@ -1,14 +1,10 @@
 {
     "name": "quantum-cryptography",
-    "private": true,
-    "version": "0.0.0",
-    "type": "module",
+    "version": "1.0.0",
+    "description": "Interactive Quantum Key Distribution (BB84) Lab",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview"
+        "build": "mkdir -p dist && cp index.html script.js dist/"
     },
-    "devDependencies": {
-        "vite": "^5.0.0"
-    }
+    "author": "Vladimir Lopez",
+    "license": "MIT"
 }
